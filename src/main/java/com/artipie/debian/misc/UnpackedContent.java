@@ -60,7 +60,10 @@ public final class UnpackedContent {
 
     /**
      * Calculates size and digest of the gz packed content.
-     * @return Sise and digest
+     * @return Size and digest
+     * @todo #41:30min Do not read full package into memory while unpacking and calculating digest
+     *  as Packages indexes can be large and this operation will be memory consuming. Some
+     *  reactive input stream will be introduced, use it to avoid memory consumption.
      */
     @SuppressWarnings("PMD.AssignmentInOperand")
     public CompletionStage<Pair<Long, String>> sizeAndDigest() {
